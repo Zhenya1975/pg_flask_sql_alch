@@ -59,9 +59,13 @@
       var socket = io.connect();
        // Мы получили с сервера сообщение по каналу 'after connect'
         // Получив по каналу собщение мы отображаем его в консоли.
-        socket.on('after connect', function(msg){
-            console.log('After connect', msg.data);
-        });
+        //socket.on('connect', function(msg){
+        //    console.log('After connect', msg.data);
+        //});
+        socket.on('connect', function() {
+                socket.emit('my_event', {data: 'I\'m connected!'});
+                console.log("есть контакт")
+            });
 
       // Обработка нажатия красного бойца в ajax
       $(".red_fighter_div").click('.select_red_fighter_ajax', function(){

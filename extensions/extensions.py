@@ -1,6 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from sqlalchemy import MetaData
+from flask_socketio import SocketIO, emit
 
 naming_convention = {
     "ix": 'ix_%(column_0_label)s',
@@ -12,3 +13,5 @@ naming_convention = {
 db = SQLAlchemy(metadata=MetaData(naming_convention=naming_convention))
 
 migrate = Migrate()
+
+socketio = SocketIO()

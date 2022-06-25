@@ -1,14 +1,19 @@
 from flask import Flask, render_template, request, flash
 from extensions import extensions
 from routes.routes import home
+from flask_socketio import SocketIO
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://evgenijzupanik:123456@localhost:5432/flask_db4'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.secret_key = 'secret string'
 
+
 db = extensions.db
 migrate = extensions.migrate
+socketio = extensions.socketio
+
+socketio.init_app(app)
 
 db.init_app(app)
 migrate.init_app(app, db, render_as_batch=True)

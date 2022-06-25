@@ -2,9 +2,19 @@ from flask import Blueprint, render_template, redirect, url_for, abort, request,
 from models.models import ParticipantsDB, FightsDB, CompetitionsDB, BacklogDB, RegistrationsDB
 from extensions import extensions
 from sqlalchemy import desc
+from flask_socketio import SocketIO, emit
 
 db = extensions.db
 home = Blueprint('home', __name__, template_folder='templates')
+
+socketio = extensions.socketio
+
+
+@socketio.event
+def my_event(message):
+    print(message)
+    emit('my_response',
+         {'data': 'datadata'})
 
 
 def fight_create_func(competition_id, round_number, final_status):
