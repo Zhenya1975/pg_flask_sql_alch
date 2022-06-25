@@ -16,9 +16,16 @@ def competition_start():
 
 @home.route('/competition_create_new/')
 def competition_create_new():
-    try:
-        db.session.query(BacklogDB).delete()
-        db.session.commit()
-    except Exception as e:
-        print(e)
+    db.session.query(BacklogDB).delete()
+    new_competition = CompetitionsDB()
+    db.session.add(new_competition)
+    db.session.commit()
+
     return "hello"
+
+@home.route('/competition_delete/')
+def competition_delete():
+    db.session.query(CompetitionsDB).delete()
+    db.session.commit()
+
+    return "deleted"

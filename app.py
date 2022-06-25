@@ -4,7 +4,7 @@ from routes.routes import home
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql://zhenya:123456@localhost:5432/flask_db4'
+app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql://evgenijzupanik:123456@localhost:5432/flask_db4'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.secret_key = 'secret string'
 
