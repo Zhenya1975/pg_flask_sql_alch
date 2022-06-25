@@ -34,11 +34,11 @@ class FightsDB(db.Model):
     red_fighter_id = db.Column(db.Integer, db.ForeignKey('registrationsDB.reg_id'))
     blue_fighter_id = db.Column(db.Integer, db.ForeignKey('registrationsDB.reg_id'))
     fight_winner_id = db.Column(db.Integer, db.ForeignKey('registrationsDB.reg_id'))
-    final_status = db.Column(db.String, default='not')
+    final_status = db.Column(db.String, default='continue')
 
 
 class BacklogDB(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    fighter_id = db.Column(db.Integer, db.ForeignKey('participantsDB.participant_id'))
+    reg_id = db.Column(db.Integer, db.ForeignKey('registrationsDB.reg_id'))
     competition_id = db.Column(db.Integer, db.ForeignKey('competitionsDB.competition_id'))
     round_number = db.Column(db.Integer)
