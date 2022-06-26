@@ -14,4 +14,4 @@ db = SQLAlchemy(metadata=MetaData(naming_convention=naming_convention))
 
 migrate = Migrate()
 
-socketio = SocketIO()
+socketio = SocketIO(logger=True, engineio_logger=True)
