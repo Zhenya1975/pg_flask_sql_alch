@@ -5,6 +5,8 @@ from sqlalchemy import desc
 from flask_socketio import SocketIO, emit
 
 db = extensions.db
+# db.create_all()
+# db.session.commit()
 home = Blueprint('home', __name__, template_folder='templates')
 
 socketio = extensions.socketio
